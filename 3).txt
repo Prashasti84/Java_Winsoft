@@ -1,0 +1,25 @@
+import java.util.HashMap;
+
+public class WordCounter {
+    public static HashMap<String, Integer> countWords(String str) {
+        HashMap<String, Integer> wordCountMap = new HashMap<>();
+        String[] words = str.split("\\s+");
+        for (String word : words) {
+            String lowercaseWord = word.toLowerCase();
+            wordCountMap.put(lowercaseWord, wordCountMap.getOrDefault(lowercaseWord, 0) + 1);
+        }
+        return wordCountMap;
+    }
+    public static void main(String[] args) {
+        String inputString = "This is a test string. This string contains some words. Words will be counted.";
+        
+        // Count words in the input string
+        HashMap<String, Integer> wordCountMap = countWords(inputString);
+        
+        // Display the word count
+        System.out.println("Word count:");
+        for (String word : wordCountMap.keySet()) {
+            System.out.println(word + ": " + wordCountMap.get(word));
+        }
+    }
+}
